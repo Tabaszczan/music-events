@@ -5,23 +5,32 @@ from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from rest_framework.reverse import reverse
 from rest_framework import generics
-
+from rest_framework.permissions import IsAuthenticated
 from events.models import Event
-from events.serializers import EventSerializer
+from events.serializers import EventListSerializer, EventCreateSerializer
 
 
 @api_view(['GET'])
 def api_root(request, format=None):
     """View for links to endpoints."""
     return Response({
-        'events': reverse('events_list', request=request, format=format),
-        'artist': reverse('artist_list', request=request, format=format)
+        'events_list': reverse('events_list', request=request, format=format),
+        'events_create': reverse('events_create', request=request, format=format),
+        'artist_list': reverse('artist_list', request=request, format=format),
+        'artist_create': reverse('artist_create', request=request, format=format)
     })
 
 
-class EventList(generics.ListCreateAPIView):
-    """List with create view for events."""
+class EventList(generics.ListAPIView):
+    """List view for events."""
 
     queryset = Event.objects.all()
-    serializer_class = EventSerializer
+    serializer_class = EventListSerializer
     permission_classes = []
+
+
+class EventCreate(generics.CreateAPIView):
+    """Create view for events."""
+    queryset = Event.objects.all()
+    serializer_class = EventCreateSerializer
+    permission_classes = [IsAuthenticated]
