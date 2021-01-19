@@ -1,0 +1,10 @@
+.git/
+.gitignore
+README.md
+*.pyc
+.idea
+__pycache__
+*.pyc
+env/
+db.sqlite3
+musicevents/local_settings.py
