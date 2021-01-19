@@ -15,6 +15,7 @@ RUN apk update \
     && pip install psycopg2 \
     && apk del build-deps
 
+
 # install dependencies
 COPY ./requirements.txt .
 RUN pip install -r requirements.txt
@@ -23,6 +24,7 @@ RUN pip install -r requirements.txt
 COPY . .
 
 # collect static files
+RUN python manage.py migrate --noinput
 RUN python manage.py collectstatic --noinput
 
 # add and run as non-root user
