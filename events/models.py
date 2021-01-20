@@ -15,7 +15,7 @@ class Event(models.Model):
     date = models.DateTimeField('Event date')
 
     def __str__(self):  # noqa: D105
-        return f'Event {self.name} at {self.date}'
+        return f'Event {self.name}'
 
     class Meta:  # noqa: D106
         verbose_name = 'Event'
