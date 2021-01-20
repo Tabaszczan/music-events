@@ -14,9 +14,8 @@ RUN apk update \
     && apk add postgresql-dev \
     && pip install psycopg2 \
     && apk del build-deps
-#RUN apk add --no-cache --repository http://dl-cdn.alpinelinux.org/alpine/edge/testing gdal-dev
-#RUN apt-get update &&\
-#    apt-get install -y binutils libproj-dev gdal-bin python-gdal python3-gdal
+
+
 # install dependencies
 COPY ./requirements.txt .
 RUN pip install -r requirements.txt

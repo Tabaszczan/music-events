@@ -15,3 +15,4 @@ six==1.15.0
 sqlparse==0.4.1
 structlog==20.1.0
 wrapt==1.12.1
+psycopg2-binary==2.8.6
