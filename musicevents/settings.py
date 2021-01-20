@@ -23,7 +23,7 @@ SECRET_KEY = os.environ.get('SECRET_KEY', default='foo')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = int(os.environ.get('DEBUG', default=0))
 
-ALLOWED_HOSTS = ['localhost', '127.0.0.1']
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'dry-anchorage-63618']
 
 # Application definition
 
@@ -123,8 +123,8 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 STATIC_URL = '/static/'
 
-try:
-    # Project
-    from musicevents.local_settings import *  # noqa: F403, F401
-except ImportError:
-    pass
+# try:
+#     # Project
+#     from musicevents.local_settings import *  # noqa: F403, F401
+# except ImportError:
+#     pass
