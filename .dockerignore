@@ -8,3 +8,4 @@ __pycache__
 env/
 db.sqlite3
 musicevents/local_settings.py
+requirements_dev.txt
