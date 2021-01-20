@@ -24,7 +24,7 @@ SECRET_KEY = os.environ.get('SECRET_KEY', default='foo')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = int(os.environ.get('DEBUG', default=0))
 
-ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'dry-anchorage-63618']
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'dry-anchorage-63618.herokuapp.com']
 
 # Application definition
 
@@ -81,8 +81,8 @@ DATABASES = {
         'ENGINE': 'django.contrib.gis.db.backends.postgis',
         'NAME': 'postgres',
         'USER': 'postgres',
-        'PASSWORD': 'postgres',
-        'HOST': 'db',
+        'PASSWORD': 'asdf',
+        'HOST': 'localhost',
         'PORT': 5432,
     }
 }
@@ -130,5 +130,5 @@ try:
 except ImportError:
     pass
 
-GDAL_LIBRARY_PATH=glob('/usr/lib/libgdal.so.*')[0]
-GEOS_LIBRARY_PATH=glob('/usr/lib/libgeos_c.so.*')[0]
+GDAL_LIBRARY_PATH = glob('/usr/lib/libgdal.so.*')[0]
+GEOS_LIBRARY_PATH = glob('/usr/lib/libgeos_c.so.*')[0]
