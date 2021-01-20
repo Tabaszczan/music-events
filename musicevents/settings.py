@@ -35,9 +35,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'django.contrib.gis',
     'rest_framework',
-    'rest_framework_gis',
     'events',
     'artists',
 ]
@@ -78,7 +76,7 @@ WSGI_APPLICATION = 'musicevents.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.contrib.gis.db.backends.postgis',
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': 'postgres',
         'USER': 'postgres',
         'PASSWORD': 'postgres',
@@ -129,6 +127,3 @@ try:
     from musicevents.local_settings import *  # noqa: F403, F401
 except ImportError:
     pass
-
-GDAL_LIBRARY_PATH = glob('/usr/lib/libgdal.so.*')[0]
-GEOS_LIBRARY_PATH = glob('/usr/lib/libgeos_c.so.*')[0]

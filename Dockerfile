@@ -14,7 +14,6 @@ RUN apk update \
     && apk add postgresql-dev \
     && pip install psycopg2 \
     && apk del build-deps
-RUN apk add --no-cache geos gdal
 
 # install dependencies
 COPY ./requirements.txt .

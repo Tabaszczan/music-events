@@ -12,5 +12,6 @@ class EventAdmin(admin.ModelAdmin):
         'name',
         'description',
         'localization_name',
-        'coordinates',
+        'longitude',
+        'latitude',
     ]
