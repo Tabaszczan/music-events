@@ -14,7 +14,7 @@ RUN apk update \
     && apk add postgresql-dev \
     && pip install psycopg2 \
     && apk del build-deps
-
+RUN apk add --no-cache geos gdal
 
 # install dependencies
 COPY ./requirements.txt .
@@ -28,7 +28,7 @@ COPY . .
 RUN python manage.py collectstatic --noinput
 
 # add and run as non-root user
-RUN adduser myuser
+RUN adduser -D myuser
 USER myuser
 
 # run gunicorn
