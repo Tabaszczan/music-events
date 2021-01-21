@@ -1,5 +1,8 @@
+# 3rd-party
 from factory.django import DjangoModelFactory
 from factory.faker import Faker
+
+# Project
 from artists.models import Artist
 
 

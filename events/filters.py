@@ -1,12 +1,14 @@
+# Standard Library
 import urllib
 
-import requests
+# Django
 from django.conf import settings
 from django.contrib.gis.geos import Point
 from django.contrib.gis.measure import Distance
-from rest_framework import filters
 
-from events.models import Event
+# 3rd-party
+import requests
+from rest_framework import filters
 
 
 class ClosestPlaces(filters.SearchFilter):

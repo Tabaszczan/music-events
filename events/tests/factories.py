@@ -1,12 +1,18 @@
+# Standard Library
 import datetime
 
+# Django
 from django.contrib.gis.geos import Point
+
+# 3rd-party
 from factory import post_generation
 from factory.django import DjangoModelFactory
 from factory.faker import Faker
-from factory.fuzzy import FuzzyFloat, FuzzyDateTime
+from factory.fuzzy import FuzzyDateTime
+from factory.fuzzy import FuzzyFloat
 from pytz import UTC
 
+# Project
 from events.models import Event
 
 

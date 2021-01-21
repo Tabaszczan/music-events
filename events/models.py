@@ -1,10 +1,12 @@
 """Models events."""
 # Create your models here.
+# Django
 from django.contrib.gis.db import models as gismodels
 from django.contrib.gis.geos import Point
-
-from artists.models import Artist
 from django.db import models
+
+# Project
+from artists.models import Artist
 
 
 class Event(models.Model):

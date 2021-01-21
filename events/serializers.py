@@ -1,5 +1,7 @@
+# 3rd-party
 from rest_framework import serializers
 
+# Local
 from .models import Event
 
 

@@ -1,4 +1,5 @@
 """Models artists."""
+# Django
 from django.db import models
 
 # Create your models here.
@@ -16,6 +17,7 @@ class Artist(models.Model):
 
     @property
     def get_participate_artists(self):
+        # Project
         from artists.serializers import ArtistSerializer
         x = None
         for item in self.event_set.all():

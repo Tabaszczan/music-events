@@ -2,9 +2,15 @@
 # Django
 from django.urls import path
 
+# Project
+from artists.views import ArtistCreate
+from artists.views import ArtistDetail
+from artists.views import ArtistList
+
 # Local
-from artists.views import ArtistList, ArtistCreate, ArtistDetail
-from .views import api_root, EventList, EventCreate
+from .views import EventCreate
+from .views import EventList
+from .views import api_root
 
 urlpatterns = [
     path('', api_root),

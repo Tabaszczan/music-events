@@ -1,11 +1,15 @@
+# 3rd-party
 from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework import generics
 # Create your views here.
-from rest_framework.filters import OrderingFilter, SearchFilter
-
-from artists.models import Artist
-from artists.serializers import ArtistListSerializer, ArtistDetailSerializer
+from rest_framework.filters import OrderingFilter
+from rest_framework.filters import SearchFilter
 from rest_framework.permissions import IsAuthenticated
+
+# Project
+from artists.models import Artist
+from artists.serializers import ArtistDetailSerializer
+from artists.serializers import ArtistListSerializer
 
 
 class ArtistList(generics.ListAPIView):

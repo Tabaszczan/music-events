@@ -1,8 +1,11 @@
+# Standard Library
 import random
 
+# Django
 from django.core.management.base import BaseCommand
 from django.db import transaction
 
+# Project
 from artists.models import Artist
 from artists.tests.factories import ArtistFactory
 from events.models import Event
@@ -11,6 +14,7 @@ from events.tests.factories import EventFactory
 NUM_ARTISTS = 50
 NUM_EVENTS = 10
 ARTIST_PER_EVENT = 5
+
 
 class Command(BaseCommand):
     help = 'Generates test data'
