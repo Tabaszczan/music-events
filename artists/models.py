@@ -1,7 +1,6 @@
 """Models artists."""
 from django.db import models
 
-
 # Create your models here.
 
 
@@ -18,11 +17,14 @@ class Artist(models.Model):
     @property
     def get_participate_artists(self):
         from artists.serializers import ArtistSerializer
-        artists = []
+        x = None
         for item in self.event_set.all():
-            serialize = ArtistSerializer(item.artists.exclude(id=self.id), many=True)
-            artists.append(serialize.data)
-        return artists
+            if x:
+                x |= item.artists.exclude(id=self.id)
+            else:
+                x = item.artists.exclude(id=self.id)
+        serialize = ArtistSerializer(x.distinct(), many=True)
+        return serialize.data
 
     def __str__(self):  # noqa: D105
         return f'Artist: {self.name}, Genre: {self.genre}'

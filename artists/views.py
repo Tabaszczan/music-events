@@ -28,7 +28,7 @@ class ArtistDetail(generics.RetrieveAPIView):
     serializer_class = ArtistDetailSerializer
     permission_classes = []
     filter_backends = [SearchFilter]
-    search_fields = ['name', 'genre', 'get_participate_artists']
+    search_fields = ['get_participate_artists__name']
 
 
 class ArtistCreate(generics.CreateAPIView):
