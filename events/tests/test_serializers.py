@@ -3,6 +3,7 @@
 import json
 
 # Django
+from django.contrib.auth.models import User
 from django.test import TestCase
 from django.urls import reverse
 
@@ -10,6 +11,7 @@ from django.urls import reverse
 from rest_framework import status
 from rest_framework.test import APIRequestFactory
 
+from artists.tests.factories import ArtistFactory
 from events.models import Event
 from events.serializers import EventListSerializer, EventCreateSerializer
 from events.tests.factories import EventFactory
@@ -36,8 +38,7 @@ class TestEventSerializer(TestCase):
             'name',
             'description',
             'localization_name',
-            'longitude',
-            'latitude',
+            'location',
             'artists',
             'date',
         ]
@@ -58,25 +59,37 @@ class TestEventSerializer(TestCase):
         EventFactory()
         EventFactory()
         EventFactory()
-        response = self.client.get(reverse('events_create'))
-        cars_query = Event.objects.all()
-        serializer = EventListSerializer(cars_query, many=True)
+        response = self.client.get(reverse('events_list'))
+        events_query = Event.objects.all()
+        serializer = EventListSerializer(events_query, many=True)
         self.assertEqual(response.data, serializer.data)
         self.assertEqual(response.status_code, status.HTTP_200_OK)
 
     def test_create_object_valid(self):
         """Test valid POST Event."""
+        user = User.objects.create(
+            username='test',
+            password='1qaz@wsx'
+        )
+        artist = ArtistFactory()
+        self.client.force_login(user)
         event = {
-            'name': 'TEST',
-            'description': 'DESCRIPTION DEST',
-            'localization_name': 'LOCALIZATION TEST',
-            'longitude': 12.0,
-            'latitude': 14.0,
-            'date': '01-01-2021 11:00',
+            "name": "213321",
+            "description": "31231123",
+            "localization_name": "1313132",
+            "location": {
+                "latitude": 12.1,
+                "longitude": 24.4
+            },
+            "artists": [
+                artist.id
+            ],
+            "date": "22-01-2021 23:49"
         }
         response = self.client.post(
             reverse('events_create'),
             data=json.dumps(event),
             content_type='application/json',
         )
+        print(response.body)
         self.assertEqual(response.status_code, status.HTTP_201_CREATED)

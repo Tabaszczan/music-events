@@ -1,5 +1,7 @@
 """Events serializers."""
 # 3rd-party
+from django.contrib.gis.geos import Point
+from drf_extra_fields.geo_fields import PointField
 from rest_framework import serializers
 
 # Local
@@ -29,8 +31,7 @@ class EventCreateSerializer(serializers.ModelSerializer):
     """Serializer Events model on create view."""
 
     date = serializers.DateTimeField(format='%d-%m-%Y %H:%M')
-    longitude = serializers.FloatField()
-    latitude = serializers.FloatField()
+    location = PointField()
 
     class Meta:  # noqa: D106
         model = Event
@@ -38,8 +39,7 @@ class EventCreateSerializer(serializers.ModelSerializer):
             'name',
             'description',
             'localization_name',
-            'longitude',
-            'latitude',
+            'location',
             'artists',
             'date',
         ]

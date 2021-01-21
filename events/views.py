@@ -1,6 +1,5 @@
 """Events views."""
 # 3rd-party
-from django.contrib.gis.geos import Point
 from rest_framework import generics
 from rest_framework.decorators import api_view
 from rest_framework.permissions import IsAuthenticated
@@ -41,18 +40,3 @@ class EventCreate(generics.CreateAPIView):
     queryset = Event.objects.all()
     serializer_class = EventCreateSerializer
     permission_classes = [IsAuthenticated]
-
-    def create(self, request, *args, **kwargs):
-        """Create localization."""
-        serializer = self.get_serializer(data=request.data)
-        serializer.is_valid(raise_exception=True)
-        validated_data = serializer.validated_data
-        if request.method == 'POST':
-            longitude = validated_data.get('longitude')
-            latitude = validated_data.get('latitude')
-            point = Point(longitude, latitude)
-            serializer.validated_data['localization'] = point
-            serializer.validated_data.pop('longitude', 'latitude')
-            serializer.perform_create(serializer)
-            print(serializer.validated_data)
-            print(serializer.data)
