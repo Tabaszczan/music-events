@@ -1,3 +1,4 @@
+"""Serializers artists."""
 # 3rd-party
 from rest_framework import serializers
 
@@ -8,7 +9,7 @@ from .models import Artist
 class ArtistListSerializer(serializers.ModelSerializer):
     """Serializer for Artist list model."""
 
-    class Meta:
+    class Meta:  # noqa: D106
         model = Artist
         fields = ['name', 'genre', 'events']
 
@@ -16,7 +17,7 @@ class ArtistListSerializer(serializers.ModelSerializer):
 class ArtistSerializer(serializers.ModelSerializer):
     """Serializer for Artist participate."""
 
-    class Meta:
+    class Meta:  # noqa: D106
         model = Artist
         fields = ['name', 'genre']
 
@@ -24,6 +25,6 @@ class ArtistSerializer(serializers.ModelSerializer):
 class ArtistDetailSerializer(serializers.ModelSerializer):
     """Serializer for Artist detail model."""
 
-    class Meta:
+    class Meta:  # noqa: D106
         model = Artist
         fields = ['name', 'genre', 'get_participate_artists']

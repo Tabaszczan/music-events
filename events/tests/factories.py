@@ -1,3 +1,4 @@
+"""Events factories."""
 # Standard Library
 import datetime
 
@@ -12,11 +13,13 @@ from factory.fuzzy import FuzzyDateTime
 from factory.fuzzy import FuzzyFloat
 from pytz import UTC
 
-# Project
-from events.models import Event
+# Local
+from ..models import Event
 
 
 class EventFactory(DjangoModelFactory):
+    """Event factory."""
+
     name = Faker('sentence')
     description = Faker('text')
     localization_name = Faker('city')
@@ -27,6 +30,7 @@ class EventFactory(DjangoModelFactory):
 
     @post_generation
     def artists(self, create, extracted, **kwargs):
+        """Generate artists relation."""
         if not create:
             return
 
@@ -36,6 +40,7 @@ class EventFactory(DjangoModelFactory):
 
     @post_generation
     def location(self, create, extracted, **kwargs):
+        """Generate random location."""
         if create:
             self.location = Point(FuzzyFloat(-180, 180).fuzz(), FuzzyFloat(-90, 90).fuzz())
 

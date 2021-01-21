@@ -11,6 +11,7 @@ from artists.models import Artist
 
 class Event(models.Model):
     """Event model."""
+
     name = models.CharField('Event name', max_length=255)
     description = models.TextField('Description')
     localization_name = models.CharField('Localization name', max_length=255)
@@ -20,10 +21,12 @@ class Event(models.Model):
 
     @property
     def longitude(self):
+        """Get longitude."""
         return self.location.x
 
     @property
     def latitude(self):
+        """Get latitude."""
         return self.location.y
 
     def __str__(self):  # noqa: D105

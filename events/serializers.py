@@ -1,3 +1,4 @@
+"""Events serializers."""
 # 3rd-party
 from rest_framework import serializers
 
@@ -7,10 +8,11 @@ from .models import Event
 
 class EventListSerializer(serializers.ModelSerializer):
     """Serializer Events model on list view."""
+
     date = serializers.DateTimeField(format='%d-%m-%Y %H:%M')
     artists = serializers.StringRelatedField(many=True)
 
-    class Meta:
+    class Meta:  # noqa: D106
         model = Event
         fields = [
             'name',
@@ -28,7 +30,7 @@ class EventCreateSerializer(serializers.ModelSerializer):
 
     date = serializers.DateTimeField(format='%d-%m-%Y %H:%M')
 
-    class Meta:
+    class Meta:  # noqa: D106
         model = Event
         fields = [
             'name',

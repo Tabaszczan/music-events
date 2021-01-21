@@ -1,3 +1,4 @@
+"""Artists factories."""
 # 3rd-party
 from factory.django import DjangoModelFactory
 from factory.faker import Faker
@@ -7,6 +8,7 @@ from artists.models import Artist
 
 
 class ArtistFactory(DjangoModelFactory):
+    """Artist factory."""
 
     name = Faker('name')
     genre = Faker('sentence')

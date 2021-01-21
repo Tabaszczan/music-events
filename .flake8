@@ -2,3 +2,4 @@
 max-line-length = 99
 exclude =   migrations,
             local_settings.py
+            manage.py

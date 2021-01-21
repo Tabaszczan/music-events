@@ -2,23 +2,24 @@
 # Django
 from django.db import models
 
-# Create your models here.
-
 
 class Artist(models.Model):
     """Artist model."""
+
     name = models.CharField('Artist name', max_length=255)
     genre = models.CharField('Music genre', max_length=255)
 
     @property
     def events(self):
+        """Get artist events list."""
         events = self.event_set.all().values_list('name', flat=True)
         return events
 
     @property
     def get_participate_artists(self):
-        # Project
-        from artists.serializers import ArtistSerializer
+        """Get artists that participate in same events."""
+        # Local
+        from .serializers import ArtistSerializer
         x = None
         for item in self.event_set.all():
             if x:

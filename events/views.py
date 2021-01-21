@@ -1,3 +1,4 @@
+"""Events views."""
 # 3rd-party
 from rest_framework import generics
 from rest_framework.decorators import api_view
@@ -5,11 +6,11 @@ from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 from rest_framework.reverse import reverse
 
-# Project
-from events.filters import ClosestPlaces
-from events.models import Event
-from events.serializers import EventCreateSerializer
-from events.serializers import EventListSerializer
+# Local
+from .filters import ClosestPlaces
+from .models import Event
+from .serializers import EventCreateSerializer
+from .serializers import EventListSerializer
 
 
 @api_view(['GET'])
@@ -19,7 +20,7 @@ def api_root(request, format=None):
         'events_list': reverse('events_list', request=request, format=format),
         'events_create': reverse('events_create', request=request, format=format),
         'artist_list': reverse('artist_list', request=request, format=format),
-        'artist_create': reverse('artist_create', request=request, format=format)
+        'artist_create': reverse('artist_create', request=request, format=format),
     })
 
 
@@ -35,6 +36,7 @@ class EventList(generics.ListAPIView):
 
 class EventCreate(generics.CreateAPIView):
     """Create view for events."""
+
     queryset = Event.objects.all()
     serializer_class = EventCreateSerializer
     permission_classes = [IsAuthenticated]

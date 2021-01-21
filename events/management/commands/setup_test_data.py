@@ -1,3 +1,4 @@
+"""Custom command file."""
 # Standard Library
 import random
 
@@ -16,17 +17,17 @@ NUM_EVENTS = 10
 ARTIST_PER_EVENT = 5
 
 
-class Command(BaseCommand):
+class Command(BaseCommand):  # noqa: D101
     help = 'Generates test data'
 
     @transaction.atomic
-    def handle(self, *args, **kwargs):
-        self.stdout.write("Deleting old data...")
+    def handle(self, *args, **kwargs):  # noqa: D102
+        self.stdout.write('Deleting old data...')
         models = [Artist, Event]
         for m in models:
             m.objects.all().delete()
 
-        self.stdout.write("Creating new data...")
+        self.stdout.write('Creating new data...')
         artists = []
         for _ in range(NUM_ARTISTS):
             artist = ArtistFactory()
@@ -36,6 +37,6 @@ class Command(BaseCommand):
             event = EventFactory()
             artist = random.choices(
                 artists,
-                k=ARTIST_PER_EVENT
+                k=ARTIST_PER_EVENT,
             )
             event.artists.add(*artist)

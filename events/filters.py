@@ -1,3 +1,4 @@
+"""Events filters."""
 # Standard Library
 import urllib
 
@@ -12,14 +13,17 @@ from rest_framework import filters
 
 
 class ClosestPlaces(filters.SearchFilter):
+    """Custom search filter for closest events."""
+
     search_title = 'Type location'
     search_description = 'Find events in 50km radius.'
 
     def filter_queryset(self, request, queryset, view):
+        """Return events in 50km radius form place typed in search."""
         place_name = urllib.parse.quote_plus(request.query_params.get('search', ''))
         r = requests.get(
             f'https://maps.googleapis.com/maps/api/geocode/json?address={place_name}&key'
-            f'={settings.GOOGLE_API_URL}'
+            f'={settings.GOOGLE_API_URL}',
         )
         if r.status_code == 200:
             lat = r.json()['results'][0]['geometry']['location']['lat']
