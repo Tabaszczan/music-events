@@ -42,7 +42,10 @@ class EventFactory(DjangoModelFactory):
     def location(self, create, extracted, **kwargs):
         """Generate random location."""
         if create:
-            self.location = Point(FuzzyFloat(-180, 180).fuzz(), FuzzyFloat(-90, 90).fuzz())
+            return
+        if extracted:
+            for location in extracted:
+                location = Point(FuzzyFloat(-180, 180).fuzz(), FuzzyFloat(-90, 90).fuzz())
 
     class Meta:  # noqa: D106
         model = Event

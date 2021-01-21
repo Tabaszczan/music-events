@@ -1,7 +1,6 @@
+"""Test artists models."""
 from django.test import TestCase
 
-from events.models import Event
-from events.tests.factories import EventFactory
 from ..models import Artist
 from ..tests.factories import ArtistFactory
 
@@ -17,11 +16,7 @@ class TestArtist(TestCase):
             f'Artist: {artist.name}, Genre: {artist.genre}'
         )
 
-    def test_events(self):
-        """Test artist events list."""
-        artist = ArtistFactory()
-        event = EventFactory(artists__in=artist)
-        self.assertEqual(
-            event.name,
-            Artist.objects.first().events,
-        )
+    def test_verbose_names(self):
+        """Test of verbose names."""
+        self.assertEqual(Artist._meta.verbose_name, 'Artist')
+        self.assertEqual(Artist._meta.verbose_name_plural, 'Artists')
