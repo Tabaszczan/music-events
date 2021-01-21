@@ -13,4 +13,5 @@ urlpatterns = [
     path('artist/', ArtistList.as_view(), name='artist_list'),
     path('artist/<int:pk>/', ArtistDetail.as_view(), name='artist_detail'),
     path('artist/create/', ArtistCreate.as_view(), name='artist_create'),
+
 ]

@@ -11,3 +11,4 @@ djangorestframework-gis==0.16
 factory-boy==3.2.0
 Faker==5.6.5
 generics==3.2.1
+requests==2.25.1

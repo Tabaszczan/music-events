@@ -1,12 +1,16 @@
-
 # Create your views here.
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from rest_framework.reverse import reverse
 from rest_framework import generics
 from rest_framework.permissions import IsAuthenticated
+
+from events.filters import ClosestPlaces
 from events.models import Event
 from events.serializers import EventListSerializer, EventCreateSerializer
+import requests
+from django.contrib.gis.measure import Distance
+from django.contrib.gis.geos import Point
 
 
 @api_view(['GET'])
@@ -26,6 +30,8 @@ class EventList(generics.ListAPIView):
     queryset = Event.objects.all()
     serializer_class = EventListSerializer
     permission_classes = []
+    filter_backends = [ClosestPlaces]
+    search_fields = ['']
 
 
 class EventCreate(generics.CreateAPIView):
@@ -33,3 +39,4 @@ class EventCreate(generics.CreateAPIView):
     queryset = Event.objects.all()
     serializer_class = EventCreateSerializer
     permission_classes = [IsAuthenticated]
+

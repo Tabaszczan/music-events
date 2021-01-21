@@ -21,7 +21,8 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = os.environ.get('SECRET_KEY', default='foo')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = int(os.environ.get('DEBUG', default=0))
+# DEBUG = int(os.environ.get('DEBUG', default=0))
+DEBUG = True
 
 ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'dry-anchorage-63618.herokuapp.com']
 
@@ -36,6 +37,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django_filters',
     'rest_framework',
+    'django.contrib.gis',
+    'rest_framework_gis',
     'events',
     'artists',
 ]
@@ -76,7 +79,7 @@ WSGI_APPLICATION = 'musicevents.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'ENGINE': 'django.contrib.gis.db.backends.postgis',
         'NAME': 'postgres',
         'USER': 'admin',
         'PASSWORD': 'asdf',
@@ -121,7 +124,7 @@ USE_TZ = True
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 STATIC_URL = '/static/'
-
+GOOGLE_API_URL = 'AIzaSyBgCtkvoZHG0mT4Ve0MxvArpyHyYtVlwEY '
 try:
     # Project
     from musicevents.local_settings import *  # noqa: F403, F401

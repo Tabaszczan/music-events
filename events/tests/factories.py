@@ -1,9 +1,11 @@
 import datetime
 
+from django.contrib.gis.geos import Point
 from factory import post_generation
 from factory.django import DjangoModelFactory
 from factory.faker import Faker
-from factory.fuzzy import FuzzyDecimal, FuzzyDate
+from factory.fuzzy import FuzzyFloat, FuzzyDateTime
+from pytz import UTC
 
 from events.models import Event
 
@@ -12,11 +14,9 @@ class EventFactory(DjangoModelFactory):
     name = Faker('sentence')
     description = Faker('text')
     localization_name = Faker('city')
-    longitude = FuzzyDecimal(-180, 180)
-    latitude = FuzzyDecimal(-90, 90)
-    date = FuzzyDate(
-        datetime.date.today(),
-        datetime.date(2121, 1, 1),
+    date = FuzzyDateTime(
+        datetime.datetime(2021, 1, 1, tzinfo=UTC),
+        datetime.datetime(2121, 1, 1, tzinfo=UTC),
     )
 
     @post_generation
@@ -27,6 +27,11 @@ class EventFactory(DjangoModelFactory):
         if extracted:
             for artist in extracted:
                 self.artists.add(artist)
+
+    @post_generation
+    def location(self, create, extracted, **kwargs):
+        if create:
+            self.location = Point(FuzzyFloat(-180, 180).fuzz(), FuzzyFloat(-90, 90).fuzz())
 
     class Meta:  # noqa: D106
         model = Event
