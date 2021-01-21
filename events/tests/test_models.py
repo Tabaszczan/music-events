@@ -28,3 +28,19 @@ class TestArtist(TestCase):
             event.longitude,
             event.location.x,
         )
+        self.assertEqual(
+            event.longitude,
+            Event.objects.get(id=event.id).longitude,
+        )
+
+    def test_latitude(self):
+        """Test latitude property"""
+        event = EventFactory()
+        self.assertEqual(
+            event.latitude,
+            event.location.y,
+        )
+        self.assertEqual(
+            event.latitude,
+            Event.objects.get(id=event.id).latitude,
+        )
