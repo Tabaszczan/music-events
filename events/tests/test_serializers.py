@@ -58,7 +58,7 @@ class TestEventSerializer(TestCase):
         EventFactory()
         EventFactory()
         EventFactory()
-        response = self.client.get(reverse('cars_list'))
+        response = self.client.get(reverse('events_create'))
         cars_query = Event.objects.all()
         serializer = EventListSerializer(cars_query, many=True)
         self.assertEqual(response.data, serializer.data)

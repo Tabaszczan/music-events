@@ -52,6 +52,7 @@ class EventCreate(generics.CreateAPIView):
             latitude = validated_data.get('latitude')
             point = Point(longitude, latitude)
             serializer.validated_data['localization'] = point
+            serializer.validated_data.pop('longitude', 'latitude')
             serializer.perform_create(serializer)
             print(serializer.validated_data)
             print(serializer.data)
