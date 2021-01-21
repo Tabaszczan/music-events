@@ -29,6 +29,8 @@ class EventCreateSerializer(serializers.ModelSerializer):
     """Serializer Events model on create view."""
 
     date = serializers.DateTimeField(format='%d-%m-%Y %H:%M')
+    longitude = serializers.FloatField()
+    latitude = serializers.FloatField()
 
     class Meta:  # noqa: D106
         model = Event
