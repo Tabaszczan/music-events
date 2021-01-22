@@ -26,12 +26,13 @@ python manage.py setup_test_data
 ### with docker
 Work In Progress
 # TO-DO
-- extract external API reponse to function and handle exceptions 
-- write more tests and fix existing ones (parametrise)
-- setup docker for postgis 
-- change create event endpoint location to something more friendly (longitude, latitude)
-- add some actions (tests, flake8)
-- parametrise objects generator
-- more info on README
+- [ ] extract external API reponse to function and handle exceptions 
+- [ ] write more tests and fix existing ones (parametrise)
+- [ ] setup docker for postgis 
+- [ ] change create event endpoint location to something more friendly (longitude, latitude)
+- [ ] add some actions (tests, flake8)
+- [ ] parametrise objects generator
+- [ ] more info on README
 
 #### If You find any bug, or something will not work contact me or make an issue
+Time spent on a task: 16 hours
