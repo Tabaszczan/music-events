@@ -2,7 +2,7 @@
 API for manage music events
 
 ## Prerequirements
-Python, pip
+Python(3.8), pip(latest)
 # How to start
 ### locally
 - Clone git repository:
