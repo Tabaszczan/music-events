@@ -10,13 +10,6 @@ Python(3.8), pip(latest)
 ```
 git clone https://github.com/Tabaszczan/music-events.git
 ```
-- In root directory run:
-
-```
-pip install -r requirements.txt
-python manage.py migrate
-python manage.py runserver
-```
 Then you need to add `local_settings` into musicevent directory with these:
 ```
 DATABASES = {
@@ -31,6 +24,14 @@ DATABASES = {
 }
 GOOGLE_API_URL = ''  # Your google api key with geocoding API on
 ```
+- In root directory run:
+
+```
+pip install -r requirements.txt
+python manage.py migrate
+python manage.py runserver
+```
+
 To generate random objects run:
 
 ```
