@@ -33,3 +33,5 @@ Work In Progress
 - add some actions (tests, flake8)
 - parametrise objects generator
 - more info on README
+
+#### If You find any bug, or something will not work contact me or make an issue
