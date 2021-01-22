@@ -125,7 +125,7 @@ USE_TZ = True
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 STATIC_URL = '/static/'
-GOOGLE_API_URL = 'AIzaSyBgCtkvoZHG0mT4Ve0MxvArpyHyYtVlwEY '
+GOOGLE_API_URL = ''
 try:
     # Project
     from musicevents.local_settings import *  # noqa: F403, F401
