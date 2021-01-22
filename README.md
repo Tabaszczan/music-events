@@ -33,6 +33,7 @@ Work In Progress
 - [ ] add some actions (tests, flake8)
 - [ ] parametrise objects generator
 - [ ] more info on README
+- [ ] Documentation
 
 #### If You find any bug, or something will not work contact me or make an issue
 Time spent on a task: 16 hours
