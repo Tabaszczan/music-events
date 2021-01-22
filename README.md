@@ -17,6 +17,20 @@ pip install -r requirements.txt
 python manage.py migrate
 python manage.py runserver
 ```
+Then you need to add `local_settings` into musicevent directory with these:
+```
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.contrib.gis.db.backends.postgis',
+        'NAME': 'postgres',  # Table name
+        'USER': 'postgres',  # Username to postgres
+        'PASSWORD': 'postgres',  # Password to postgres account
+        'HOST': 'db',  # Hostanme
+        'PORT': 5432,
+    },
+}
+GOOGLE_API_URL = ''  # Your google api key with geocoding API on
+```
 To generate random objects run:
 
 ```
